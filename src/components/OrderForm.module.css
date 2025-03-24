@@ -1,0 +1,11 @@
+header {
+    background-color: #CE2829;
+    color: white;
+    display: flex;
+
+}
+header nav {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+}
