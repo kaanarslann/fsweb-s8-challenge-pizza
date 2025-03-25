@@ -102,9 +102,11 @@ const TopInfo = styled.span`
 `;
 const Toppings = styled.div`
     margin-top: 2rem;
+    width: 110%;
     @media (max-width: 768px) {
         margin-left: -5rem;
         margin-right: -13rem;
+        width: 160%;
     }
 `;
 const StyledTopLabel = styled(Label)`
@@ -322,20 +324,6 @@ export default function OrderForm() {
                 setErrors({...errors, name: false});
             }
         }
-        if (name == "size") {
-            if (value === "") {
-                setErrors({...errors, size: true});
-            } else {
-                setErrors({...errors, size: false});
-            }
-        }
-        if (name == "dough") {
-            if (value === "") {
-                setErrors({...errors, dough: true});
-            } else {
-                setErrors({...errors, dough: false});
-            }
-        }
     };
 
     const handleNumPlus = (event) => {
@@ -459,7 +447,6 @@ export default function OrderForm() {
                                     ))}
                                 </Row>
                             </Toppings>
-                            {errors.toppings && <FormFeedback>{errorMessages.toppings}</FormFeedback>}
                         </FormMiddle>
                         <FormLower>
                             <FormGroup>
