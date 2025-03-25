@@ -1,7 +1,7 @@
 import logo from "../../images/iteration-1-images/logo.svg";
 import Pizza from "./Pizza";
 import {Form, FormGroup, Input, Label, FormFeedback, Row, Col} from "reactstrap";
-import {useHistory} from "react-router-dom";
+import {useHistory, Link} from "react-router-dom";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
@@ -146,11 +146,7 @@ const FormSubmit = styled.div`
     padding-top: 3rem;
 
     @media (max-width: 768px) {
-        flex-direction: column;
-        gap: 2rem;
-        align-items: center;
-        min-width: 160%;
-        margin-left: -5rem;
+        display: none;
     }
 `;
 const PizzaNum = styled.div`
@@ -216,9 +212,9 @@ const TotalContainer = styled.div`
     flex-direction: column;
     gap: 1rem;
     border: 0.5px solid #5F5F5F;
-    border-bottom: none;
     padding: 2.5rem 3rem;
-    border-radius: 0.5rem 0.5rem 0 0;
+    border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+    margin-bottom: -0.1rem;
     font-family: Barlow, sans-serif;
 
 `;
@@ -250,9 +246,41 @@ const SubmitButton = styled.button`
     height: 4.5rem;
     font-family: Barlow, sans-serif;
     font-size: 1.5rem;
+    &:disabled {
+        background-color: #5F5F5F;
+        color: white;
+    }
     @media (max-width: 768px) {
         height: 3.5rem;
+        width: 40%;
+        font-size: 1.3rem;
     }
+`;
+const FormSubmitMobile = styled.div`
+    display: none;
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+    }
+`;
+const TotalContainerMobile = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: 0.5px solid #5F5F5F;
+    padding: 2.5rem 3rem;
+    border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+    font-family: Barlow, sans-serif;
+    width: 160%;
+    margin-left: -5rem;
+`;
+const SubmitSectionMobile = styled.div`
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 160%;
+    margin-left: -5rem;
+    margin-top: 3rem;
 `;
 const Red = styled.span`
     color: #CE2829;
@@ -365,9 +393,9 @@ export default function OrderForm() {
             <Header>
                 <Logo src={logo} alt="Teknolojik Yemekler logo" />
                 <Nav>
-                    <a href="/">Anasayfa</a>
-                    <span> - </span>
-                    <a href="/order">Sipariş Oluştur</a>
+                <Link to="/">Anasayfa</Link>
+                <span> - </span>
+                <Link to="/order">Sipariş Oluştur</Link>
                 </Nav>
             </Header>
             <Main>
@@ -416,13 +444,13 @@ export default function OrderForm() {
                         </FormUpper>
                         <FormMiddle>
                             <h3>Ek Malzemeler</h3>
-                            <TopInfo>En Fazla 10 malzeme seçebilirsiniz. 5₺</TopInfo>
+                            <TopInfo>En az 4, en fazla 10 malzeme seçebilirsiniz. 5₺</TopInfo>
                             <Toppings>
                                 <Row className="g-3">
                                     {toppings.map((topping, index) => (
                                         <Col xs="6" md="4" key={index}>
                                             <FormGroup check>
-                                                <StyledTopInput type="checkbox" data-cy="checkbox" checked={form.toppings[index]} onChange={() => handleCheckboxChange(index)}/>
+                                                <StyledTopInput type="checkbox" data-cy="checkbox" checked={form.toppings[index]} invalid={errors.toppings} onChange={() => handleCheckboxChange(index)}/>
                                                 <StyledTopLabel check>
                                                     {topping}
                                                 </StyledTopLabel>
@@ -431,6 +459,7 @@ export default function OrderForm() {
                                     ))}
                                 </Row>
                             </Toppings>
+                            {errors.toppings && <FormFeedback>{errorMessages.toppings}</FormFeedback>}
                         </FormMiddle>
                         <FormLower>
                             <FormGroup>
@@ -458,6 +487,21 @@ export default function OrderForm() {
                                 <SubmitButton data-cy="submit-button" disabled={!isValid}>SİPARİŞ VER</SubmitButton>
                             </SubmitSection>    
                         </FormSubmit>
+                        <FormSubmitMobile>
+                            <TotalContainerMobile>
+                                <h3>Sipariş Toplamı</h3>
+                                <ToppingPrice><span>Seçimler</span><span>{totalPrice.toFixed(2)}₺</span></ToppingPrice>
+                                <OrderPrice><span>Toplam</span><span>{(totalPrice + basePrice) * pizzaNum}₺</span></OrderPrice>
+                            </TotalContainerMobile>
+                            <SubmitSectionMobile>
+                                <PizzaNum>
+                                    <NumButtonLeft onClick={handleNumMinus} color="#FDC913">-</NumButtonLeft>
+                                    <NumContainer className="num-container">{pizzaNum}</NumContainer>
+                                    <NumButtonRight onClick={handleNumPlus} color="#FDC913">+</NumButtonRight>
+                                </PizzaNum>
+                                <SubmitButton data-cy="submit-button-mobil" disabled={!isValid}>SİPARİŞ VER</SubmitButton>
+                            </SubmitSectionMobile>    
+                        </FormSubmitMobile>
                     </Form>
                 </section>
             </Main>
