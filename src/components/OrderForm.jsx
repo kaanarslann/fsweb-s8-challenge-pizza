@@ -39,6 +39,9 @@ const Main = styled.main`
     margin: 0 auto;
 
 `;
+const PizzaInfo = styled.section`
+    
+`;
 const FormUpper = styled.div`
     display: flex;
     gap: 18rem;
@@ -55,10 +58,21 @@ const PizzaSize = styled.div`
         min-width: 50%;
     }
 `;
+const Boyut = styled.h3`
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+`;
 const PizzaDough = styled.div`
     @media (max-width: 768px) {
         min-width: 55%;
     } 
+`;
+const Hamur = styled.h3`
+    margin-bottom: 0.1rem;
+    font-size: 1.5rem;
+    @media (max-width: 768px) {
+        font-size: 1,3rem;
+    }
 `;
 const FormMiddle = styled.div`
     display: flex;
@@ -77,16 +91,14 @@ const FormMiddle = styled.div`
 }
     }
 `;
-const Hamur = styled.h3`
-    margin-bottom: 0.1rem;
-    font-size: 1.5rem;
+const TopInfo = styled.span`
+    font-size: 1.3rem;
+    color: #5F5F5F;
+    font-weight: 500;
+
     @media (max-width: 768px) {
-        font-size: 1,3rem;
+        font-size: 1.1rem;
     }
-`;
-const Boyut = styled.h3`
-    margin-bottom: 2rem;
-    font-size: 1.5rem;
 `;
 const Toppings = styled.div`
     margin-top: 2rem;
@@ -104,6 +116,27 @@ const StyledTopLabel = styled(Label)`
 const StyledTopInput = styled(Input)`
     width: 1.2rem;
     height: 1.2rem;
+`;
+const FormLower = styled.div`
+    @media (max-width: 768px) {
+        min-width: 100%;
+        
+    }
+`;
+const StyledTextLabel = styled(Label)`
+    font-size: 1.7rem;
+    font-weight: 500;
+    @media (max-width: 768px) {
+        margin-left: -5rem;
+    }
+`;
+const StyledTextInput = styled(Input)`
+    height: 4.5rem;
+    @media (max-width: 768px) {
+           width: 160%;
+           height: 3.5rem;
+           margin-left: -5rem;
+    }
 `;
 const FormSubmit = styled.div`
     display: flex;
@@ -189,20 +222,6 @@ const TotalContainer = styled.div`
     font-family: Barlow, sans-serif;
 
 `;
-const SubmitButton = styled.button`
-    background-color: #FDC913;
-    color: black;
-    text-align: center;
-    font-weight: 500;
-    border: none;
-    border-radius: 0.5rem;
-    height: 4.5rem;
-    font-family: Barlow, sans-serif;
-    font-size: 1.5rem;
-    @media (max-width: 768px) {
-        height: 3.5rem;
-    }
-`;
 const ToppingPrice = styled.div`
     display: flex;
     justify-content: space-between;
@@ -221,41 +240,22 @@ const OrderPrice = styled.div`
         font-size: 1.5rem;
     }
 `;
+const SubmitButton = styled.button`
+    background-color: #FDC913;
+    color: black;
+    text-align: center;
+    font-weight: 500;
+    border: none;
+    border-radius: 0.5rem;
+    height: 4.5rem;
+    font-family: Barlow, sans-serif;
+    font-size: 1.5rem;
+    @media (max-width: 768px) {
+        height: 3.5rem;
+    }
+`;
 const Red = styled.span`
     color: #CE2829;
-`;
-const TopInfo = styled.span`
-    font-size: 1.3rem;
-    color: #5F5F5F;
-    font-weight: 500;
-
-    @media (max-width: 768px) {
-        font-size: 1.1rem;
-    }
-`;
-const StyledTextLabel = styled(Label)`
-    font-size: 1.7rem;
-    font-weight: 500;
-    @media (max-width: 768px) {
-        margin-left: -5rem;
-    }
-`;
-const StyledTextInput = styled(Input)`
-    height: 4.5rem;
-    @media (max-width: 768px) {
-           width: 160%;
-           height: 3.5rem;
-           margin-left: -5rem;
-    }
-`;
-const PizzaInfo = styled.section`
-    
-`;
-const FormLower = styled.div`
-    @media (max-width: 768px) {
-        min-width: 100%;
-        
-    }
 `;
 
 export default function OrderForm() {
@@ -363,7 +363,7 @@ export default function OrderForm() {
     return (
         <Page>
             <Header>
-                <Logo src={logo} className="logo" alt="Teknolojik Yemekler logo" />
+                <Logo src={logo} alt="Teknolojik Yemekler logo" />
                 <Nav>
                     <a href="/">Anasayfa</a>
                     <span> - </span>
@@ -371,41 +371,41 @@ export default function OrderForm() {
                 </Nav>
             </Header>
             <Main>
-                <PizzaInfo className="pizza-info">
+                <PizzaInfo>
                     <Pizza />
                 </PizzaInfo>
-                <section className="order-form">
+                <section>
                     <Form onSubmit={handleSubmit}>
-                        <FormUpper className="form-upper">
-                            <PizzaSize className="pizza-size">
+                        <FormUpper>
+                            <PizzaSize>
                                 <Boyut>Boyut Seç <Red className="red">*</Red></Boyut>
                                 <FormGroup check className="mb-3">
-                                    <Input name="size" type="radio" value="Küçük" onChange={handleChange}/>
+                                    <Input name="size" type="radio" value="Küçük" data-cy="radio-small" onChange={handleChange}/>
                                     {' '}
                                     <Label check>
                                         Küçük
                                     </Label>
                                 </FormGroup>
                                 <FormGroup check className="mb-3">
-                                    <Input name="size" type="radio" value="Orta" onChange={handleChange}/>
+                                    <Input name="size" type="radio" value="Orta" data-cy="radio-medium" onChange={handleChange}/>
                                     {' '}
                                     <Label check>
                                         Orta
                                     </Label>
                                 </FormGroup>
                                 <FormGroup check className="mb-3">
-                                    <Input name="size" type="radio" value="Büyük" onChange={handleChange}/>
+                                    <Input name="size" type="radio" value="Büyük" data-cy="radio-big" onChange={handleChange}/>
                                     {' '}
                                     <Label check>
                                         Büyük
                                     </Label>
                                 </FormGroup>
                             </PizzaSize>
-                            <PizzaDough className="pizza-dough">
+                            <PizzaDough>
                                 <Hamur>Hamur Seç <Red className="red">*</Red></Hamur>
                                 <FormGroup>
                                     <Label htmlFor="dough"></Label>
-                                    <Input type="select" name="dough" id="dough" value={form.dough} onChange={handleChange}>
+                                    <Input type="select" name="dough" id="dough" value={form.dough} data-cy="select" onChange={handleChange}>
                                         <option value="" disabled defaultValue>Hamur Kalınlığı</option>
                                         <option value="çok ince">Çok ince</option>
                                         <option value="ince">İnce</option>
@@ -414,15 +414,15 @@ export default function OrderForm() {
                                 </FormGroup>
                             </PizzaDough>
                         </FormUpper>
-                        <FormMiddle className="form-middle">
+                        <FormMiddle>
                             <h3>Ek Malzemeler</h3>
                             <TopInfo>En Fazla 10 malzeme seçebilirsiniz. 5₺</TopInfo>
-                            <Toppings className="toppings">
+                            <Toppings>
                                 <Row className="g-3">
                                     {toppings.map((topping, index) => (
                                         <Col xs="6" md="4" key={index}>
                                             <FormGroup check>
-                                                <StyledTopInput type="checkbox" checked={form.toppings[index]} onChange={() => handleCheckboxChange(index)} />
+                                                <StyledTopInput type="checkbox" data-cy="checkbox" checked={form.toppings[index]} onChange={() => handleCheckboxChange(index)}/>
                                                 <StyledTopLabel check>
                                                     {topping}
                                                 </StyledTopLabel>
@@ -432,30 +432,30 @@ export default function OrderForm() {
                                 </Row>
                             </Toppings>
                         </FormMiddle>
-                        <FormLower className="form-lower">
+                        <FormLower>
                             <FormGroup>
                                 <StyledTextLabel htmlFor="name">İsim</StyledTextLabel>
-                                <StyledTextInput type="text" name="name" id="name" value={form.name} onChange={handleChange} placeholder="İsim (en az 3 karakter)" invalid={errors.name}/>
+                                <StyledTextInput type="text" name="name" id="name" data-cy="name-input" value={form.name} onChange={handleChange} placeholder="İsim (en az 3 karakter)" invalid={errors.name}/>
                                 {errors.name && <FormFeedback>{errorMessages.name}</FormFeedback>}
                             </FormGroup>
                             <FormGroup>
                                 <StyledTextLabel htmlFor="notes">Sipariş Notu</StyledTextLabel>
-                                <StyledTextInput type="textarea" name="notes" id="notes" value={form.notes} onChange={handleChange} placeholder="Siparişine eklemek istediğin bir not var mı?"/>
+                                <StyledTextInput type="textarea" name="notes" id="notes" data-cy="textarea" value={form.notes} onChange={handleChange} placeholder="Siparişine eklemek istediğin bir not var mı?"/>
                             </FormGroup>
                         </FormLower>
-                        <FormSubmit className="form-submit">
-                            <PizzaNum className="pizza-num">
+                        <FormSubmit>
+                            <PizzaNum>
                                 <NumButtonLeft onClick={handleNumMinus} color="#FDC913">-</NumButtonLeft>
                                 <NumContainer className="num-container">{pizzaNum}</NumContainer>
                                 <NumButtonRight onClick={handleNumPlus} color="#FDC913">+</NumButtonRight>
                             </PizzaNum>
-                            <SubmitSection className="submit-button">
-                                <TotalContainer className="total-price">
+                            <SubmitSection>
+                                <TotalContainer>
                                     <h3>Sipariş Toplamı</h3>
                                     <ToppingPrice><span>Seçimler</span><span>{totalPrice.toFixed(2)}₺</span></ToppingPrice>
                                     <OrderPrice><span>Toplam</span><span>{(totalPrice + basePrice) * pizzaNum}₺</span></OrderPrice>
                                 </TotalContainer>
-                                <SubmitButton color="#FDC913" disabled={!isValid}>SİPARİŞ VER</SubmitButton>
+                                <SubmitButton data-cy="submit-button" disabled={!isValid}>SİPARİŞ VER</SubmitButton>
                             </SubmitSection>    
                         </FormSubmit>
                     </Form>

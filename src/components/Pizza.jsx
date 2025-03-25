@@ -57,14 +57,14 @@ export default function Pizza() {
                 <Title>Position Absolute Acı Pizza</Title>
             </Header>
             <Main>
-                <InfoUpper className="info-upper">
-                    <Price className="price">85.50₺</Price>
-                    <UserRating className="upper-right">
+                <InfoUpper>
+                    <Price>85.50₺</Price>
+                    <UserRating>
                         <span className="user-rating">4.9</span>
                         <span className="user-comments">(200)</span>
                     </UserRating>
                 </InfoUpper>
-                <InfoLower className="info-lower">
+                <InfoLower>
                     <p>Forntent Dev olarak hala position:absolute kullanıyorsan bu çok acı pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir fırında yüksek sıcaklıkta pişirilen, genellikle yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli lezzetli bir yemektir.. Küçük bir pizzaya bazen pizzetta denir.</p>
                 </InfoLower>
             </Main>

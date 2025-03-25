@@ -80,12 +80,12 @@ export default function HomePage() {
     return (
         <Page>
             <Header>
-                <Logo src={logo} className="logo" alt="Teknolojik Yemekler logo" />
+                <Logo src={logo} alt="Teknolojik Yemekler logo" />
             </Header>
             <Main>
                 <Title>KOD ACIKTIRIR</Title>
                 <Title>PİZZA, DOYURUR</Title>    
-                <Button onClick={handleClick}>ACIKTIM</Button>
+                <Button data-cy="order-form" onClick={handleClick}>ACIKTIM</Button>
             </Main>
         </Page>
     )
