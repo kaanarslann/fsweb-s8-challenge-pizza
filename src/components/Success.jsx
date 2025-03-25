@@ -11,9 +11,18 @@ const Header = styled.header`
     display: flex;
     justify-content: center;
     align-items: flex-start;
+
+    @media (max-width: 768px) {
+        margin-bottom: 12rem;
+    }
 `;
 const Logo = styled.img`
     margin-top: 6rem;
+
+    @media (max-width: 768px) {
+        width: 60%;
+        margin-top: 3rem;
+    }
 `;
 const Main = styled.main`
     display: flex;
@@ -21,10 +30,20 @@ const Main = styled.main`
     align-items: center;
     flex-direction: column;
     margin-top: 20rem;
+    
+    @media (max-width: 768px) {
+        width: 50%;
+        margin: 0 auto;
+    }
+    
     h1 {
         color: white;
         font-size: 5rem;
         font-weight: 300;
+
+        @media (max-width: 768px) {
+            font-size: 3rem;
+            text-align: center;
     }
 `;
 

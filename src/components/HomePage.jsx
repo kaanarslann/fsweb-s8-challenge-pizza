@@ -9,6 +9,10 @@ const Page = styled.div`
     background-repeat: no-repeat;
     height: 100vh;
     width: 100vw;
+
+    @media (max-width: 768px) {
+        background-position: center;
+    }
 `;
 const Header = styled.header`
     display: flex;
@@ -17,6 +21,11 @@ const Header = styled.header`
 `;
 const Logo = styled.img`
     margin-top: 6rem;
+
+    @media (max-width: 768px) {
+        width: 60%;
+        margin-top: 3rem;
+    }
 `;
 const Main = styled.main`
     display: flex;
@@ -24,6 +33,11 @@ const Main = styled.main`
     align-items: center;
     flex-direction: column;
     margin-top: 3rem;
+
+    @media (max-width: 768px) {
+        width: 50%;
+        margin: 2rem auto;
+    }
 `;
 const Title = styled.h2`
     color: white;
@@ -31,6 +45,11 @@ const Title = styled.h2`
     justify-content: center;
     font-size: 5rem;
     font-weight: 300;
+
+    @media (max-width: 768px) {
+        font-size: 3rem;
+        text-align: center;
+    }
 `;
 const Button = styled.button`
     background-color: #FDC913;
@@ -42,6 +61,11 @@ const Button = styled.button`
     font-weight: bold;
     border: none;
     margin-top: 2rem;
+
+    @media (max-width: 768px) {
+        width: 10rem;
+        height: 3rem;
+    }
 `;
 
 

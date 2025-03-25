@@ -17,6 +17,9 @@ const InfoUpper = styled.section`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 768px) {
+        
+    }
 `;
 const Price = styled.span`
     font-family: Barlow, sans-serif;
@@ -34,11 +37,22 @@ const InfoLower = styled.section`
     font-family: Barlow, sans-serif;
     line-height: 2.2rem;
     font-size: 1.3rem;
+    
+    @media (max-width: 768px) {
+        
+    }
 `;
-
+const Page = styled.div`
+    display: flex;
+    flex-direction: column;
+    @media (max-width: 768px) {
+        min-width: 170%;
+        margin-left: -26%;
+    }
+`;
 export default function Pizza() {
     return (
-        <div>
+        <Page>
             <Header>
                 <Title>Position Absolute Acı Pizza</Title>
             </Header>
@@ -54,6 +68,6 @@ export default function Pizza() {
                     <p>Forntent Dev olarak hala position:absolute kullanıyorsan bu çok acı pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir fırında yüksek sıcaklıkta pişirilen, genellikle yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli lezzetli bir yemektir.. Küçük bir pizzaya bazen pizzetta denir.</p>
                 </InfoLower>
             </Main>
-        </div>
+        </Page>
     )
 }

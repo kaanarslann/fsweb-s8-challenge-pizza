@@ -37,14 +37,28 @@ const Main = styled.main`
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
+
 `;
 const FormUpper = styled.div`
     display: flex;
-    gap: 15rem;
+    gap: 18rem;
     padding: 1rem 0;
+    justify-content: flex-start;
+
+    @media (max-width: 768px) {
+        gap: 9.5rem;
+        justify-content: center;
+    }
 `;
 const PizzaSize = styled.div`
-    font-size: 1.3rem;
+    @media (max-width: 768px) {
+        min-width: 50%;
+    }
+`;
+const PizzaDough = styled.div`
+    @media (max-width: 768px) {
+        min-width: 55%;
+    } 
 `;
 const FormMiddle = styled.div`
     display: flex;
@@ -53,15 +67,33 @@ const FormMiddle = styled.div`
     margin-top: 1rem;
     margin-bottom: 4rem;
     font-family: Barlow, sans-serif;
+    @media (max-width: 768px) {
+        min-width: 100%;
+        h3 {
+            margin-left: -5rem;
+        }
+        span {
+            margin-left: -5rem;
+}
+    }
 `;
 const Hamur = styled.h3`
     margin-bottom: 0.1rem;
+    font-size: 1.5rem;
+    @media (max-width: 768px) {
+        font-size: 1,3rem;
+    }
 `;
 const Boyut = styled.h3`
     margin-bottom: 2rem;
+    font-size: 1.5rem;
 `;
 const Toppings = styled.div`
     margin-top: 2rem;
+    @media (max-width: 768px) {
+        margin-left: -5rem;
+        margin-right: -13rem;
+    }
 `;
 const StyledTopLabel = styled(Label)`
     font-size: 1.2rem;
@@ -79,10 +111,20 @@ const FormSubmit = styled.div`
     gap: 1rem;
     border-top: 1.5px #5F5F5F80 solid;
     padding-top: 3rem;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        min-width: 160%;
+        margin-left: -5rem;
+    }
 `;
 const PizzaNum = styled.div`
     display: flex;
-    
+    @media (max-width: 768px) {
+        
+    }
 `;
 const NumButtonLeft = styled.button`
     background-color: #FDC913;
@@ -93,6 +135,10 @@ const NumButtonLeft = styled.button`
     font-size: 1.5rem;
     border-radius: 0.5rem 0 0 0.5rem;
     cursor: pointer;
+    @media (max-width: 768px) {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
 `;
 const NumButtonRight = styled.button`
     background-color: #FDC913;
@@ -103,6 +149,10 @@ const NumButtonRight = styled.button`
     font-size: 1.5rem;
     border-radius: 0 0.5rem 0.5rem 0;
     cursor: pointer;
+    @media (max-width: 768px) {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
 `;
 const NumContainer = styled.span`
     border: 1px solid #5F5F5F;
@@ -112,12 +162,21 @@ const NumContainer = styled.span`
     text-align: center;
     padding-top: 1.5rem;
     font-weight: bold;
-
+    @media (max-width: 768px) {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 1.1rem;
+        padding-top: 1rem;
+    }
 `;
 const SubmitSection = styled.div`
     display: flex;
     flex-direction: column;
     width: 60%;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `;
 const TotalContainer = styled.div`
     display: flex;
@@ -128,6 +187,7 @@ const TotalContainer = styled.div`
     padding: 2.5rem 3rem;
     border-radius: 0.5rem 0.5rem 0 0;
     font-family: Barlow, sans-serif;
+
 `;
 const SubmitButton = styled.button`
     background-color: #FDC913;
@@ -139,6 +199,9 @@ const SubmitButton = styled.button`
     height: 4.5rem;
     font-family: Barlow, sans-serif;
     font-size: 1.5rem;
+    @media (max-width: 768px) {
+        height: 3.5rem;
+    }
 `;
 const ToppingPrice = styled.div`
     display: flex;
@@ -165,13 +228,34 @@ const TopInfo = styled.span`
     font-size: 1.3rem;
     color: #5F5F5F;
     font-weight: 500;
+
+    @media (max-width: 768px) {
+        font-size: 1.1rem;
+    }
 `;
 const StyledTextLabel = styled(Label)`
     font-size: 1.7rem;
     font-weight: 500;
+    @media (max-width: 768px) {
+        margin-left: -5rem;
+    }
 `;
 const StyledTextInput = styled(Input)`
     height: 4.5rem;
+    @media (max-width: 768px) {
+           width: 160%;
+           height: 3.5rem;
+           margin-left: -5rem;
+    }
+`;
+const PizzaInfo = styled.section`
+    
+`;
+const FormLower = styled.div`
+    @media (max-width: 768px) {
+        min-width: 100%;
+        
+    }
 `;
 
 export default function OrderForm() {
@@ -287,9 +371,9 @@ export default function OrderForm() {
                 </Nav>
             </Header>
             <Main>
-                <section className="pizza-info">
+                <PizzaInfo className="pizza-info">
                     <Pizza />
-                </section>
+                </PizzaInfo>
                 <section className="order-form">
                     <Form onSubmit={handleSubmit}>
                         <FormUpper className="form-upper">
@@ -317,7 +401,7 @@ export default function OrderForm() {
                                     </Label>
                                 </FormGroup>
                             </PizzaSize>
-                            <div className="pizza-dough">
+                            <PizzaDough className="pizza-dough">
                                 <Hamur>Hamur Seç <Red className="red">*</Red></Hamur>
                                 <FormGroup>
                                     <Label htmlFor="dough"></Label>
@@ -328,7 +412,7 @@ export default function OrderForm() {
                                         <option value="normal">Normal</option>
                                     </Input>
                                 </FormGroup>
-                            </div>
+                            </PizzaDough>
                         </FormUpper>
                         <FormMiddle className="form-middle">
                             <h3>Ek Malzemeler</h3>
@@ -336,7 +420,7 @@ export default function OrderForm() {
                             <Toppings className="toppings">
                                 <Row className="g-3">
                                     {toppings.map((topping, index) => (
-                                        <Col xs="4" key={index}>
+                                        <Col xs="6" md="4" key={index}>
                                             <FormGroup check>
                                                 <StyledTopInput type="checkbox" checked={form.toppings[index]} onChange={() => handleCheckboxChange(index)} />
                                                 <StyledTopLabel check>
@@ -348,7 +432,7 @@ export default function OrderForm() {
                                 </Row>
                             </Toppings>
                         </FormMiddle>
-                        <div className="form-lower">
+                        <FormLower className="form-lower">
                             <FormGroup>
                                 <StyledTextLabel htmlFor="name">İsim</StyledTextLabel>
                                 <StyledTextInput type="text" name="name" id="name" value={form.name} onChange={handleChange} placeholder="İsim (en az 3 karakter)" invalid={errors.name}/>
@@ -358,7 +442,7 @@ export default function OrderForm() {
                                 <StyledTextLabel htmlFor="notes">Sipariş Notu</StyledTextLabel>
                                 <StyledTextInput type="textarea" name="notes" id="notes" value={form.notes} onChange={handleChange} placeholder="Siparişine eklemek istediğin bir not var mı?"/>
                             </FormGroup>
-                        </div>
+                        </FormLower>
                         <FormSubmit className="form-submit">
                             <PizzaNum className="pizza-num">
                                 <NumButtonLeft onClick={handleNumMinus} color="#FDC913">-</NumButtonLeft>
