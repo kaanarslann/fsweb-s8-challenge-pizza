@@ -1,14 +1,27 @@
 import logo from "../../images/iteration-1-images/logo.svg";
-import { useHistory } from "react-router-dom";
+import ramen from "../../images/iteration-2-images/icons/1.svg";
+import pizza from "../../images/iteration-2-images/icons/2.svg";
+import burger from "../../images/iteration-2-images/icons/3.svg";
+import fries from "../../images/iteration-2-images/icons/4.svg";
+import fastfood from "../../images/iteration-2-images/icons/5.svg";
+import drink from "../../images/iteration-2-images/icons/6.svg";
+import termnalPizza from "../../images/iteration-2-images/pictures/food-1.png";
+import positionAbsolutePizza from "../../images/iteration-2-images/pictures/food-2.png";
+import useEffectTavukluPizza from "../../images/iteration-2-images/pictures/food-3.png";
+import { useHistory, Link } from "react-router-dom";
 import styled from "styled-components";
+import FooterSection from "./FooterSection";
+import Lezzetus from "./Lezzetus";
+import Kurye from "./Kurye";
+import Hackathlon from "./Hackathlon";
 
 const Page = styled.div`
-    background-image: url("../../images/iteration-1-images/home-banner.png");
     font-family: Roboto Condensed, sans-serif;
+    background-image: url("../../images/iteration-1-images/home-banner.png");
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
+    height: 90vh;
+    width: 99.2vw;
 
     @media (max-width: 768px) {
         background-position: center;
@@ -51,6 +64,11 @@ const Title = styled.h2`
         text-align: center;
     }
 `;
+const SubTitle = styled.h3`
+    font-family: "Satisfy", cursive;
+    color: #FDC913;
+    font-size: 2rem;
+`;
 const Button = styled.button`
     background-color: #FDC913;
     color: black;
@@ -67,8 +85,133 @@ const Button = styled.button`
         height: 3rem;
     }
 `;
+const Banner = styled.section`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 35rem;
+`;
+const Nav = styled.nav`
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 1rem 0;
+    align-items: center;
+    height: 5rem;
 
+    & a {
+        color: black;
+        text-decoration: none;
+        padding-left: 1rem;
+    }
+`;
+const Components = styled.section`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 90%;
+    height: 380px;
+    margin: 2rem auto:
+`;
+const LeftContainer = styled.div`
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+`;
+const RightContainer = styled.div`
+    width: 23%;
+    height: 100%;
+    margin-top: -1rem;
+`;
+const UpperContainer = styled.div`
+    width: 80%;
+    margin-bottom: 0.5rem;
+`;
+const LowerContainer = styled.div`
+    width: 80%;
+`;
+const Menu = styled.section`
+    display: flex;
+    flex-direction: column;
+    background-color: #FAF7F2;
+    width: 100%;
+    align-items: center;
+    padding-top: 3rem;
+    margin-top: 3rem;
+`;
+const MenuTitle = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 2rem;
+    & span {
+        font-family: "Satisfy", cursive;
+        color: #CE2829;
+        font-size: 2rem;
+    }
+`;
+const MenuNavItem = styled.div`
+    border: 1px solid #FAF7F2;
+    border-radius: 5rem;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
 
+    &:hover {
+        background-color: #292929;
+        & a {
+            color: white;
+        }
+    }
+`;
+const Cards = styled.div`
+    display: flex;
+    gap: 2rem;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+`;
+const Card = styled.div`
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 0.5rem;
+
+    & img {
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 1rem;
+    }
+    & span {
+        font-weight: bold;
+        margin-left: 1rem;
+    }
+`;
+const CardInfo = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    & span {
+        font-weight: 400;
+        margin: 0 1rem;
+    }
+`;
+const CardInfoRight = styled.div`
+    display: flex;
+    
+`;
+const Footer = styled.footer`
+    display: flex;
+    flex-direction: column;
+    background-color: #292929;
+    color: white;
+    align-items: center;
+    font-family: Barlow, sans-serif;
+`;
 
 export default function HomePage() {
     const history = useHistory();
@@ -83,10 +226,122 @@ export default function HomePage() {
                 <Logo src={logo} alt="Teknolojik Yemekler logo" />
             </Header>
             <Main>
-                <Title>KOD ACIKTIRIR</Title>
-                <Title>PİZZA, DOYURUR</Title>    
-                <Button data-cy="order-form" onClick={handleClick}>ACIKTIM</Button>
+                <Banner>
+                    <SubTitle>fırsatı kaçırma</SubTitle>
+                    <Title>KOD ACIKTIRIR</Title>
+                    <Title>PİZZA, DOYURUR</Title>    
+                    <Button data-cy="order-form" onClick={handleClick}>ACIKTIM</Button>
+                </Banner>
+                <Nav>
+                    <div>
+                        <img src={ramen}/>
+                        <Link to="/order">YENİ! Kore</Link>
+                    </div>
+                    <div>
+                        <img src={pizza}/>
+                        <Link to="/order">Pizza</Link>
+                    </div>
+                    <div>
+                        <img src={burger}/>
+                        <Link to="/order">Burger</Link>
+                    </div>
+                    <div>
+                        <img src={fries}/>
+                        <Link to="/order">Kızartmalar</Link>
+                    </div>
+                    <div>
+                        <img src={fastfood}/>
+                        <Link to="/order">Fast food</Link>
+                    </div>
+                    <div>
+                        <img src={drink}/>
+                        <Link to="/order">Gazlı İçecek</Link>
+                    </div>
+                </Nav>
+                <Components>
+                    <LeftContainer>
+                        <Lezzetus />
+                    </LeftContainer>
+                    <RightContainer>
+                        <UpperContainer>
+                            <Hackathlon />
+                        </UpperContainer>
+                        <LowerContainer>
+                            <Kurye />
+                        </LowerContainer>
+                    </RightContainer>
+                </Components>
+                <Menu>
+                    <MenuTitle>
+                        <span>en çok paketlenen menüler</span>
+                        <h2>Acıktıran Kodlara Doyuran Lezzetler</h2>
+                    </MenuTitle>
+                    <Nav>
+                        <MenuNavItem>
+                            <img src={ramen}/>
+                            <Link to="/order">Ramen</Link>
+                        </MenuNavItem>
+                        <MenuNavItem>
+                            <img src={pizza}/>
+                            <Link to="/order">Pizza</Link>
+                        </MenuNavItem>
+                        <MenuNavItem>
+                            <img src={burger}/>
+                            <Link to="/order">Burger</Link>
+                        </MenuNavItem>
+                        <MenuNavItem>
+                            <img src={fries}/>
+                            <Link to="/order">French fries</Link>
+                        </MenuNavItem>
+                        <MenuNavItem>
+                            <img src={fastfood}/>
+                            <Link to="/order">Fast food</Link>
+                        </MenuNavItem>
+                        <MenuNavItem>
+                            <img src={drink}/>
+                            <Link to="/order">Soft drinks</Link>
+                        </MenuNavItem>
+                    </Nav>
+                    <Cards>
+                        <Card>
+                            <img src={termnalPizza} />
+                            <span>Terminal Pizza</span>
+                            <CardInfo>
+                                <span>4.9</span>
+                                <CardInfoRight>
+                                    <span>(200)</span>
+                                    <span>60₺</span>
+                                </CardInfoRight>
+                            </CardInfo>
+                        </Card>
+                        <Card>
+                            <img src={positionAbsolutePizza} />
+                            <span>Position Absolute Pizza</span>
+                            <CardInfo>
+                                <span>4.9</span>
+                                <CardInfoRight>
+                                    <span>(200)</span>
+                                    <span>60₺</span>
+                                </CardInfoRight>
+                            </CardInfo>
+                        </Card>
+                        <Card>
+                            <img src={useEffectTavukluPizza} />
+                            <span>useEffect Tavuklu Pizza</span>
+                            <CardInfo>
+                                <span>4.9</span>
+                                <CardInfoRight>
+                                    <span>(200)</span>
+                                    <span>60₺</span>
+                                </CardInfoRight>
+                            </CardInfo>
+                        </Card>
+                    </Cards>
+                </Menu>
             </Main>
+            <Footer>
+                <FooterSection />
+            </Footer>
         </Page>
     )
 }
