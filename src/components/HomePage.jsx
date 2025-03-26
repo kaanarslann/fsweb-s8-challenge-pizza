@@ -112,6 +112,7 @@ const Components = styled.section`
     gap: 1rem;
     width: 90%;
     height: 380px;
+    margin-top: 2rem;
     margin: 2rem auto:
 `;
 const LeftContainer = styled.div`

@@ -17,6 +17,7 @@ const InfoUpper = styled.section`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 2rem;
     @media (max-width: 768px) {
         
     }
@@ -35,8 +36,10 @@ const UserRating = styled.div`
 `;
 const InfoLower = styled.section`
     font-family: Barlow, sans-serif;
-    line-height: 2.2rem;
+    line-height: 2.4rem;
     font-size: 1.3rem;
+    margin-top: 2rem;
+    color: #5F5F5F;
     
     @media (max-width: 768px) {
         

@@ -1,5 +1,7 @@
 import logo from "../../images/iteration-1-images/logo.svg";
+import banner from "../../images/iteration-2-images/pictures/form-banner.png";
 import Pizza from "./Pizza";
+import FooterSection from "./FooterSection";
 import {Form, FormGroup, Input, Label, FormFeedback, Row, Col} from "reactstrap";
 import {useHistory, Link} from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -24,11 +26,15 @@ const Logo = styled.img`
 const Nav = styled.nav`
     display: flex;
     gap: 0.5rem;
-    margin-top: 1rem;
+    margin-top: 5rem;
     margin-right: 20%;
     a {
-        color: white;
+        color: #292929;
         text-decoration: none;
+        font-size: 1.2rem;
+        &:hover {
+            color: red;
+        }
     }
 `;
 const Main = styled.main`
@@ -39,12 +45,20 @@ const Main = styled.main`
     margin: 0 auto;
 
 `;
+const OrderUpper = styled.section`
+    background-color: #FAF7F2;
+    width: 99.2vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
 const PizzaInfo = styled.section`
-    
+    width: 28%;
 `;
 const FormUpper = styled.div`
     display: flex;
-    gap: 18rem;
+    gap: 8rem;
     padding: 1rem 0;
     justify-content: flex-start;
 
@@ -54,22 +68,63 @@ const FormUpper = styled.div`
     }
 `;
 const PizzaSize = styled.div`
+    display: flex;
+    flex-direction: column;
     @media (max-width: 768px) {
         min-width: 50%;
     }
 `;
+const RadioInput = styled(Input)`
+    display: none;
+
+    & + span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 4.5rem;
+        height: 4.5rem;
+        background-color: #FAF7F2;
+        margin-top: 1rem;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        color: black;
+        cursor: pointer;
+    }
+    &:checked + span {
+        background-color: #FFEBEE;
+    }
+`;
+const RadioLabel = styled(Label)`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
+const SizeButtons = styled.div`
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-left: -2rem;
+`;
 const Boyut = styled.h3`
-    margin-bottom: 2rem;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    margin-bottom: 0.1rem;
+    margin-top: 1rem;
 `;
 const PizzaDough = styled.div`
     @media (max-width: 768px) {
         min-width: 55%;
     } 
 `;
+const SelectInput = styled(Input)`
+    background-color: #FAF7F2;
+    width: 170%;
+    height: 60px;
+`;
 const Hamur = styled.h3`
     margin-bottom: 0.1rem;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    margin-top: 0.8rem;
     @media (max-width: 768px) {
         font-size: 1,3rem;
     }
@@ -380,53 +435,55 @@ export default function OrderForm() {
         <Page>
             <Header>
                 <Logo src={logo} alt="Teknolojik Yemekler logo" />
-                <Nav>
-                <Link to="/">Anasayfa</Link>
-                <span> - </span>
-                <Link to="/order">Sipariş Oluştur</Link>
-                </Nav>
             </Header>
             <Main>
-                <PizzaInfo>
-                    <Pizza />
-                </PizzaInfo>
+                <OrderUpper>
+                    <img src={banner}/>
+                    <Nav>
+                        <Link to="/">Anasayfa</Link>
+                        <span> - </span>
+                        <Link to="/order">Sipariş Oluştur</Link>
+                    </Nav>
+                    <PizzaInfo>
+                            <Pizza />
+                    </PizzaInfo>
+                </OrderUpper>
                 <section>
                     <Form onSubmit={handleSubmit}>
                         <FormUpper>
                             <PizzaSize>
                                 <Boyut>Boyut Seç <Red className="red">*</Red></Boyut>
-                                <FormGroup check className="mb-3">
-                                    <Input name="size" type="radio" value="Küçük" data-cy="radio-small" onChange={handleChange}/>
-                                    {' '}
-                                    <Label check>
-                                        Küçük
-                                    </Label>
-                                </FormGroup>
-                                <FormGroup check className="mb-3">
-                                    <Input name="size" type="radio" value="Orta" data-cy="radio-medium" onChange={handleChange}/>
-                                    {' '}
-                                    <Label check>
-                                        Orta
-                                    </Label>
-                                </FormGroup>
-                                <FormGroup check className="mb-3">
-                                    <Input name="size" type="radio" value="Büyük" data-cy="radio-big" onChange={handleChange}/>
-                                    {' '}
-                                    <Label check>
-                                        Büyük
-                                    </Label>
-                                </FormGroup>
+                                <SizeButtons>
+                                    <FormGroup check className="mb-3">
+                                        <RadioLabel check>
+                                        <RadioInput name="size" type="radio" value="Küçük" data-cy="radio-small" onChange={handleChange}/>
+                                            <span>S</span>
+                                        </RadioLabel>
+                                    </FormGroup>
+                                    <FormGroup check className="mb-3">
+                                        <RadioLabel check>
+                                        <RadioInput name="size" type="radio" value="Orta" data-cy="radio-medium" onChange={handleChange}/>
+                                            <span>M</span>
+                                        </RadioLabel>
+                                    </FormGroup>
+                                    <FormGroup check className="mb-3">
+                                        <RadioLabel check>
+                                        <RadioInput name="size" type="radio" value="Büyük" data-cy="radio-big" onChange={handleChange}/>
+                                            <span>L</span>
+                                        </RadioLabel>
+                                    </FormGroup>
+                                </SizeButtons>
                             </PizzaSize>
                             <PizzaDough>
                                 <Hamur>Hamur Seç <Red className="red">*</Red></Hamur>
                                 <FormGroup>
                                     <Label htmlFor="dough"></Label>
-                                    <Input type="select" name="dough" id="dough" value={form.dough} data-cy="select" onChange={handleChange}>
-                                        <option value="" disabled defaultValue>Hamur Kalınlığı</option>
+                                    <SelectInput type="select" name="dough" id="dough" value={form.dough} data-cy="select" onChange={handleChange}>
+                                        <option value="" disabled defaultValue>-Hamur Kalınlığı Seç-</option>
                                         <option value="çok ince">Çok ince</option>
                                         <option value="ince">İnce</option>
                                         <option value="normal">Normal</option>
-                                    </Input>
+                                    </SelectInput>
                                 </FormGroup>
                             </PizzaDough>
                         </FormUpper>
