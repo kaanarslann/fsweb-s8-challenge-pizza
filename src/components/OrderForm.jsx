@@ -10,7 +10,6 @@ import axios from "axios";
 
 const Page = styled.div`
     font-family: Roboto Condensed, sans-serif;
-    margin-bottom: 3rem;
 `;
 const Header = styled.header`
     background-color: #CE2829;
@@ -43,7 +42,7 @@ const Main = styled.main`
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
-
+    margin-bottom: 8rem;
 `;
 const OrderUpper = styled.section`
     background-color: #FAF7F2;
@@ -353,7 +352,7 @@ const Red = styled.span`
     color: #CE2829;
 `;
 
-export default function OrderForm() {
+export default function OrderForm({setFormData}) {
     const toppings = ["Pepperoni", "Sosis", "Kanada Jambonu", "Tavuk Izgara", "Soğan", "Domates", "Mısır", "Sucuk", "Jalepeno", "Sarımsak", "Biber", "Sucuk", "Ananas", "Kabak"];
     const basePrice = 85.50;
     const errorMessages = {
@@ -367,11 +366,15 @@ export default function OrderForm() {
         size: "",
         dough: "",
         notes: "",
-        toppings: Array(toppings.length).fill(false),
+        toppings: toppings,
+        toppingsP: 0,
+        price: 85.50
     };
     const history = useHistory();
     const [pizzaNum, setPizzaNum] = useState(1);
-    const [totalPrice, setTotalPrice] = useState(0);
+    const [totalPrice, setTotalPrice] = useState(85.50);
+    const [toppingsPrice, setToppingsPrice] = useState(0);
+    const [selectedToppings, setSelectedToppings] = useState(Array(initialForm.toppings.length).fill(false));
     const [form, setForm] = useState(initialForm);
     const [isValid, setIsValid] = useState(false);
     const [errors, setErrors] = useState({
@@ -393,24 +396,45 @@ export default function OrderForm() {
 
     const handleNumPlus = (event) => {
         event.preventDefault();
-        setPizzaNum(pizzaNum + 1);
+        const newPizzaNum = pizzaNum + 1;
+        const newPrice = totalPrice * newPizzaNum;
+        setPizzaNum(newPizzaNum);
+        setForm({...form, price: newPrice});
     }
     const handleNumMinus = (event) => {
         event.preventDefault();
         if (pizzaNum > 1) {
-            setPizzaNum(pizzaNum - 1);
+            const newPizzaNum = pizzaNum - 1;
+            const newPrice = totalPrice * newPizzaNum;
+            setPizzaNum(newPizzaNum);
+            setForm({...form, price: newPrice});
         }
     }
 
     const handleCheckboxChange = (index) => {
-        const updatedToppings = [...form.toppings];
-        updatedToppings[index] = !updatedToppings[index];
-        const priceChange = updatedToppings[index] ? 5 : -5;
-        setTotalPrice(totalPrice + priceChange);
-        setForm({...form, toppings: updatedToppings});
+        const updatedSelectedToppings = [...selectedToppings];
+        updatedSelectedToppings[index] = !updatedSelectedToppings[index];
+        const selectedToppingsNames = [];
+        updatedSelectedToppings.forEach((isSelected, i) => {
+            if (isSelected) {
+                selectedToppingsNames.push(initialForm.toppings[i]);
+            }
+        });
+        const priceChange = updatedSelectedToppings[index] ? 5 : -5;
+        const updatedToppingsPrice = toppingsPrice + priceChange;
+        const updatedTotalPrice = 85.50 + updatedToppingsPrice;
+        
+        setTotalPrice(updatedTotalPrice);
+        setSelectedToppings(updatedSelectedToppings);
+        setToppingsPrice(updatedToppingsPrice);
+        setForm({...form,
+            toppings: selectedToppingsNames,
+            toppingsP: updatedToppingsPrice,
+            price: updatedTotalPrice
+         });
 
-        const selectedToppings = updatedToppings.filter((topping) => topping);
-        if (selectedToppings.length < 4 || selectedToppings.length > 10) {
+        const selectedToppingsCount  = selectedToppingsNames.filter((topping) => topping);
+        if (selectedToppingsCount.length < 4 || selectedToppingsCount.length > 10) {
             setErrors({...errors, toppings: true});
         } else {
             setErrors({...errors, toppings: false});
@@ -432,7 +456,7 @@ export default function OrderForm() {
             axios.post("https://reqres.in/api/pizza", form)
             .then((response) => {
                 console.log(response.data);
-                setForm(initialForm);
+                setFormData(form);
                 history.push("/success");
             })
             .catch((error) => {
@@ -466,19 +490,19 @@ export default function OrderForm() {
                                 <SizeButtons>
                                     <FormGroup check className="mb-3">
                                         <RadioLabel check>
-                                        <RadioInput name="size" type="radio" value="Küçük" data-cy="radio-small" onChange={handleChange}/>
+                                        <RadioInput name="size" type="radio" value="S" data-cy="radio-small" onChange={handleChange}/>
                                             <span>S</span>
                                         </RadioLabel>
                                     </FormGroup>
                                     <FormGroup check className="mb-3">
                                         <RadioLabel check>
-                                        <RadioInput name="size" type="radio" value="Orta" data-cy="radio-medium" onChange={handleChange}/>
+                                        <RadioInput name="size" type="radio" value="M" data-cy="radio-medium" onChange={handleChange}/>
                                             <span>M</span>
                                         </RadioLabel>
                                     </FormGroup>
                                     <FormGroup check className="mb-3">
                                         <RadioLabel check>
-                                        <RadioInput name="size" type="radio" value="Büyük" data-cy="radio-big" onChange={handleChange}/>
+                                        <RadioInput name="size" type="radio" value="L" data-cy="radio-big" onChange={handleChange}/>
                                             <span>L</span>
                                         </RadioLabel>
                                     </FormGroup>
@@ -490,9 +514,9 @@ export default function OrderForm() {
                                     <Label htmlFor="dough"></Label>
                                     <SelectInput type="select" name="dough" id="dough" value={form.dough} data-cy="select" onChange={handleChange}>
                                         <option value="" disabled defaultValue>-Hamur Kalınlığı Seç-</option>
-                                        <option value="çok ince">Çok ince</option>
-                                        <option value="ince">İnce</option>
-                                        <option value="normal">Normal</option>
+                                        <option value="Çok ince">Çok ince</option>
+                                        <option value="İnce">İnce</option>
+                                        <option value="Normal">Normal</option>
                                     </SelectInput>
                                 </FormGroup>
                             </PizzaDough>
@@ -505,7 +529,7 @@ export default function OrderForm() {
                                     {toppings.map((topping, index) => (
                                         <Col xs="6" md="4" key={index}>
                                             <FormGroup check>
-                                                <StyledTopInput type="checkbox" data-cy="checkbox" checked={form.toppings[index]} invalid={errors.toppings} onChange={() => handleCheckboxChange(index)}/>
+                                                <StyledTopInput type="checkbox" data-cy="checkbox" checked={selectedToppings[index]} invalid={errors.toppings} onChange={() => handleCheckboxChange(index)}/>
                                                 <StyledTopLabel check>
                                                     {topping}
                                                 </StyledTopLabel>
@@ -535,8 +559,8 @@ export default function OrderForm() {
                             <SubmitSection>
                                 <TotalContainer>
                                     <h3>Sipariş Toplamı</h3>
-                                    <ToppingPrice><span>Seçimler</span><span>{totalPrice.toFixed(2)}₺</span></ToppingPrice>
-                                    <OrderPrice><span>Toplam</span><span>{(totalPrice + basePrice) * pizzaNum}₺</span></OrderPrice>
+                                    <ToppingPrice><span>Seçimler</span><span>{form.toppingsP.toFixed(2)}₺</span></ToppingPrice>
+                                    <OrderPrice><span>Toplam</span><span>{form.price}₺</span></OrderPrice>
                                 </TotalContainer>
                                 <SubmitButton data-cy="submit-button" disabled={!isValid}>SİPARİŞ VER</SubmitButton>
                             </SubmitSection>    
@@ -559,6 +583,9 @@ export default function OrderForm() {
                     </Form>
                 </section>
             </Main>
+            <footer>
+                <FooterSection />
+            </footer>
         </Page>
         )
     
