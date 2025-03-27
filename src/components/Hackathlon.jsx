@@ -4,10 +4,14 @@ import styled from "styled-components";
 
 const Page = styled.div`
     background-image: url(${image});
-    background-size: cover;
-    height: 50%;
+    background-size: auto;
+    background-position: center;
+    width: 90%;
+    aspect-ratio: 2/1;
     padding: 2rem;
     border-radius: 5%;
+    @media (max-width: 768px) {
+        background-position: cover;
 `;
 const Title = styled.h2`
     font-family: Roboto, sans-serif;

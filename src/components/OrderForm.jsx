@@ -35,6 +35,9 @@ const Nav = styled.nav`
             color: red;
         }
     }
+    @media (max-width: 768px) {
+        margin-top:1rem;
+    }
 `;
 const Main = styled.main`
     width: 28%;
@@ -51,9 +54,19 @@ const OrderUpper = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media (max-width: 768px) {
+        height: 110vh;
+        & img {
+            width: 80%;
+        }
+    }
 `;
 const PizzaInfo = styled.section`
     width: 28%;
+    @media (max-width: 768px) {
+        width: 50%;
+        margintop: -5rem;
+    }
 `;
 const FormUpper = styled.div`
     display: flex;
@@ -64,6 +77,7 @@ const FormUpper = styled.div`
     @media (max-width: 768px) {
         gap: 9.5rem;
         justify-content: center;
+        margin-top: 5rem;
     }
 `;
 const PizzaSize = styled.div`
@@ -74,8 +88,7 @@ const PizzaSize = styled.div`
     }
 `;
 const RadioInput = styled(Input)`
-    display: none;
-
+    opacity: 0;
     & + span {
         display: flex;
         align-items: center;
@@ -92,6 +105,11 @@ const RadioInput = styled(Input)`
     &:checked + span {
         background-color: #FFEBEE;
     }
+    @media (max-width: 768px) {
+        flex-direction: column;
+        width: 0.1rem;
+        height: 0.1rem;
+    }
 `;
 
 const RadioLabel = styled(Label)`
@@ -105,6 +123,9 @@ const SizeButtons = styled.div`
     gap: 0.5rem;
     justify-content: center;
     margin-left: -2rem;
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
 `;
 const Boyut = styled.h3`
     font-size: 1.8rem;
@@ -120,6 +141,11 @@ const SelectInput = styled(Input)`
     background-color: #FAF7F2;
     width: 170%;
     height: 60px;
+
+    @media (max-width: 768px) {
+        width: 100%;
+        height: 40px;
+    }
 `;
 const Hamur = styled.h3`
     margin-bottom: 0.1rem;

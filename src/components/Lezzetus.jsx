@@ -5,9 +5,13 @@ import styled from "styled-components";
 const Page = styled.div`
     background: url(${image});
     background-size: cover;
-    height: 105%;
+    width: 90%;
+    aspect-ratio: 1/1;
     padding: 2rem;
     border-radius: 5%;
+    @media (max-width: 768px) {
+        
+    }
 `;
 const Title = styled.h2`
     font-family: "Quattrocento", serif;

@@ -18,6 +18,8 @@ const Page = styled.div`
     color: white;
     align-items: center;
     font-family: Barlow, sans-serif;
+    @media (max-width: 768px) {
+    }
 `;
 const FooterUpper = styled.section`
     display: flex;
@@ -26,6 +28,9 @@ const FooterUpper = styled.section`
     margin: 3rem 0;
     gap: 0.5rem;
     border-bottom: 1px solid white;
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
 `;
 const FooterLower = styled.section`
     margin-left: -37%;
@@ -41,6 +46,10 @@ const FooterLeft = styled.div`
     & span {
         margin-left: 1rem;
     }
+    @media (max-width: 768px) {
+        margin-left: 8rem;
+        width: 45%;
+    }
 `;
 const FooterLogo = styled.img`
     width: 50%;
@@ -55,6 +64,9 @@ const FooterMiddle = styled.div`
         margin: 2rem 0;
         font-weight: bold;
         font-size: 1.5rem;
+    }
+    @media (max-width: 768px) {
+        margin-left: 8rem;
     }
 `;
 const FooterNav = styled.div`
@@ -78,6 +90,11 @@ const FooterRight = styled.div`
         margin: 2rem 0;
         font-weight: bold;
         font-size: 1.5rem;
+    }
+    @media (max-width: 768px) {
+    margin-left: 8rem;
+    width: 45%;
+    margin-bottom: 5rem;
     }
 `;
 const Instagram = styled.div`

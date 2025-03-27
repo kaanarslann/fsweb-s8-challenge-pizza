@@ -29,7 +29,8 @@ describe('Form Gönderme', () => {
     cy.get("[data-cy='textarea']").type('Lütfen zili çalmayın')
     cy.get("[data-cy='submit-button']").click()
     cy.url().should('include', '/success')
-    cy.contains('SİPARİŞİNİZ ALINDI!').should('be.visible')
+    cy.contains('SİPARİŞ ALINDI').should('be.visible')
+    cy.get("[data-cy='formData-size']").should("have.text", "M")
   })
 })
 

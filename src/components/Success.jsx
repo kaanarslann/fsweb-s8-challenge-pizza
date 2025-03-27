@@ -9,7 +9,6 @@ const Page = styled.div`
 const Header = styled.header`
     display: flex;
     justify-content: center;
-    align-items: flex-start;
 
     @media (max-width: 768px) {
         margin-bottom: 12rem;
@@ -32,7 +31,8 @@ const Main = styled.main`
     
     @media (max-width: 768px) {
         width: 50%;
-        margin: 0 auto;
+        margin-top: -5rem;
+        margin-left: 13rem;
     }
     
 `;
@@ -41,6 +41,9 @@ const SuccessTitle = styled.section`
     flex-direction: column;
     align-items: center;
     border-bottom: 1px solid white;
+    @media (max-width: 768px) {
+            margin-right:2rem;
+        }
     & span {
         font-family: "Satisfy", cursive;
         color: #FDC913;
@@ -56,6 +59,7 @@ const SuccessTitle = styled.section`
         @media (max-width: 768px) {
             font-size: 3rem;
             text-align: center;
+        }
     }
 `;
 const Summary = styled.section`
@@ -68,6 +72,12 @@ const Summary = styled.section`
 
     & h3 {
         font-size: 2rem;
+    }
+    @media (max-width: 768px) {
+        & h3 {
+        margin-right: 2rem;
+        font-size: 1.5rem;
+        }
     }
 `;
 const Bold = styled.span`
@@ -82,6 +92,9 @@ const SummaryLower = styled.div`
     font-size: 1.5rem;
     width: 50%;
     margin-bottom: 4rem;
+    @media (max-width: 768px) {
+            margin-right: 5rem;
+        }
 `;
 const TotalSection = styled.section`
     border: 1px solid white;
@@ -98,6 +111,9 @@ const TotalSection = styled.section`
     & h3 {
         margin-bottom: 1rem;
     }
+    @media (max-width: 768px) {
+        width: 120%;
+    }
 `;
 const TotalLower = styled.section`
     display: flex;
@@ -108,6 +124,9 @@ const TotalLower = styled.section`
 const LowerInfo = styled.div`
     display: flex;
     gap: 12rem;
+    @media (max-width: 768px) {
+         gap: 9rem;
+        }
 `;
 
 export default function Success({formData}) {
@@ -129,7 +148,7 @@ export default function Success({formData}) {
                     <h3>Position Absolute Acı Pizza</h3>
                     <SummaryLower>
                         <div>
-                        <span>Boyut: </span><Bold>{formData.size}</Bold>
+                        <span>Boyut: </span><Bold data-cy="formData-size">{formData.size}</Bold>
                         </div>
                         <div>
                         <span>Hamur: </span><Bold>{formData.dough}</Bold>
@@ -146,7 +165,7 @@ export default function Success({formData}) {
                             <span>Seçimler</span><span>{toppingsPrice}</span>
                         </LowerInfo>
                         <LowerInfo>
-                            <span>Toplam</span><span>{price}</span>
+                            <span>Toplam</span><span data-cy="formData-price">{price}</span>
                         </LowerInfo>
                     </TotalLower>
                 </TotalSection>

@@ -17,20 +17,32 @@ import Hackathlon from "./Hackathlon";
 
 const Page = styled.div`
     font-family: Roboto Condensed, sans-serif;
+    
+
+    @media (max-width: 768px) {
+        
+    }
+`;
+const MainUpper = styled.section`
     background-image: url("../../images/iteration-1-images/home-banner.png");
     background-size: cover;
     background-repeat: no-repeat;
-    height: 90vh;
-    width: 99.2vw;
-
+    height: 1100px;
+    width: 100%;
     @media (max-width: 768px) {
         background-position: center;
+        height: 700px;
+        background-size: auto;
     }
 `;
 const Header = styled.header`
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+
+    @media (max-width: 768px) {
+        margin-bottom: 2rem;
+    }
 `;
 const Logo = styled.img`
     margin-top: 6rem;
@@ -45,11 +57,9 @@ const Main = styled.main`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 3rem;
 
     @media (max-width: 768px) {
-        width: 50%;
-        margin: 2rem auto;
+        
     }
 `;
 const Title = styled.h2`
@@ -90,6 +100,9 @@ const Banner = styled.section`
     flex-direction: column;
     align-items: center;
     margin-bottom: 35rem;
+    @media (max-width: 768px) {
+        margin-bottom: 25rem;
+    }
 `;
 const Nav = styled.nav`
     display: flex;
@@ -97,12 +110,16 @@ const Nav = styled.nav`
     gap: 3rem;
     margin: 1rem 0;
     align-items: center;
-    height: 5rem;
 
     & a {
         color: black;
         text-decoration: none;
         padding-left: 1rem;
+    }
+    @media (max-width: 768px) {
+        flex-wrap: wrap;
+        flex-direction: column;
+        height: 240px;
     }
 `;
 const Components = styled.section`
@@ -110,28 +127,46 @@ const Components = styled.section`
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    width: 90%;
-    height: 380px;
-    margin-top: 2rem;
-    margin: 2rem auto:
+    width: 100%;
+    background-color: #FAF7F2;
+    padding-top: 3rem;
+    @media (max-width: 768px) {
+        width: 100%;
+        flex-direction: column;
+        height: 100rem;;
+    }
 `;
 const LeftContainer = styled.div`
-    width: 20%;
-    height: 100%;
+    width: 23%;
     display: flex;
     align-items: center;
+    @media (max-width: 768px) {
+        margin-bottom: 1rem;
+        width: 100%;
+    }
 `;
 const RightContainer = styled.div`
     width: 23%;
-    height: 100%;
     margin-top: -1rem;
+    @media (max-width: 768px) {
+        margin-bottom: 1rem;
+        width: 100%;
+    }
 `;
 const UpperContainer = styled.div`
-    width: 80%;
+    width: 100%;
     margin-bottom: 0.5rem;
+    @media (max-width: 768px) {
+        margin-bottom: 1rem;
+        width: 100%;
+    }
 `;
 const LowerContainer = styled.div`
-    width: 80%;
+    width: 100%;
+    @media (max-width: 768px) {
+        margin-bottom: 1rem;
+        width: 100%;
+    }
 `;
 const Menu = styled.section`
     display: flex;
@@ -140,7 +175,7 @@ const Menu = styled.section`
     width: 100%;
     align-items: center;
     padding-top: 3rem;
-    margin-top: 3rem;
+    
 `;
 const MenuTitle = styled.div`
     display: flex;
@@ -175,6 +210,9 @@ const Cards = styled.div`
     gap: 2rem;
     margin-top: 4rem;
     margin-bottom: 3rem;
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
 `;
 const Card = styled.div`
     display: flex;
@@ -205,14 +243,7 @@ const CardInfoRight = styled.div`
     display: flex;
     
 `;
-const Footer = styled.footer`
-    display: flex;
-    flex-direction: column;
-    background-color: #292929;
-    color: white;
-    align-items: center;
-    font-family: Barlow, sans-serif;
-`;
+
 
 export default function HomePage() {
     const history = useHistory();
@@ -223,16 +254,18 @@ export default function HomePage() {
 
     return (
         <Page>
-            <Header>
-                <Logo src={logo} alt="Teknolojik Yemekler logo" />
-            </Header>
             <Main>
+                <MainUpper>
+                <Header>
+                    <Logo src={logo} alt="Teknolojik Yemekler logo" />
+                </Header>
                 <Banner>
                     <SubTitle>fırsatı kaçırma</SubTitle>
                     <Title>KOD ACIKTIRIR</Title>
                     <Title>PİZZA, DOYURUR</Title>    
                     <Button data-cy="order-form" onClick={handleClick}>ACIKTIM</Button>
                 </Banner>
+                </MainUpper>
                 <Nav>
                     <div>
                         <img src={ramen}/>
@@ -340,9 +373,9 @@ export default function HomePage() {
                     </Cards>
                 </Menu>
             </Main>
-            <Footer>
+            <footer>
                 <FooterSection />
-            </Footer>
+            </footer>
         </Page>
     )
 }
