@@ -86,7 +86,7 @@ const RadioInput = styled(Input)`
         background-color: #FAF7F2;
         margin-top: 1rem;
         border-radius: 50%;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         color: black;
         cursor: pointer;
     }
@@ -94,6 +94,7 @@ const RadioInput = styled(Input)`
         background-color: #FFEBEE;
     }
 `;
+
 const RadioLabel = styled(Label)`
     display: flex;
     flex-direction: column;
@@ -169,10 +170,17 @@ const StyledTopLabel = styled(Label)`
     font-weight: 600;
     color: #292929;
     margin-left: 0.8rem;
+    margin-top: 1rem;
 `;
 const StyledTopInput = styled(Input)`
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: #FAF7F2;
+    border: none;
+    cursor: pointer;
+    &:checked {
+        background-color: #FDC913;
+    }
 `;
 const FormLower = styled.div`
     @media (max-width: 768px) {
@@ -189,6 +197,7 @@ const StyledTextLabel = styled(Label)`
 `;
 const StyledTextInput = styled(Input)`
     height: 4.5rem;
+    background-color: #FAF7F2;
     @media (max-width: 768px) {
            width: 160%;
            height: 3.5rem;
@@ -273,7 +282,7 @@ const TotalContainer = styled.div`
     border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
     margin-bottom: -0.1rem;
     font-family: Barlow, sans-serif;
-
+    background-color: #FAF7F2;
 `;
 const ToppingPrice = styled.div`
     display: flex;
@@ -330,6 +339,7 @@ const TotalContainerMobile = styled.div`
     font-family: Barlow, sans-serif;
     width: 160%;
     margin-left: -5rem;
+    background-color: #FAF7F2;
 `;
 const SubmitSectionMobile = styled.div`
     display: flex;
