@@ -6,7 +6,7 @@ const Page = styled.div`
     background-image: url(${image});
     background-size: auto;
     background-position: center;
-    width: 90%;
+    width: 100%;
     aspect-ratio: 2/1;
     padding: 2rem;
     border-radius: 5%;
@@ -27,6 +27,7 @@ const Button = styled.button`
     border-radius: 5rem;
     height: 2.5rem;
     padding: 0.5rem;
+    margin-top: 1rem;
 `;
 
 export default function Hackathlon() {

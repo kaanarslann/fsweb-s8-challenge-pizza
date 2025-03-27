@@ -13,12 +13,14 @@ import {Link} from "react-router-dom";
 
 const Page = styled.div`
     display: flex;
+    padding: 0 25rem;
     flex-direction: column;
     background-color: #292929;
     color: white;
     align-items: center;
     font-family: Barlow, sans-serif;
     @media (max-width: 768px) {
+        padding: 0 2rem;
     }
 `;
 const FooterUpper = styled.section`
@@ -33,26 +35,30 @@ const FooterUpper = styled.section`
     }
 `;
 const FooterLower = styled.section`
-    margin-left: -37%;
+    margin-left: -65rem;
     margin-bottom: 2rem;
+    @media (max-width: 768px) {
+        margin-left: -30rem;
+    }
 `;
 const FooterLeft = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
     width: 33%;
-    margin-left: 45rem;
 
     & span {
         margin-left: 1rem;
     }
     @media (max-width: 768px) {
-        margin-left: 8rem;
-        width: 45%;
+        width: 50%;
     }
 `;
 const FooterLogo = styled.img`
     width: 50%;
+    @media (max-width: 768px) {
+        width: 50%;
+    }
 `;
 const FooterMiddle = styled.div`
     display: flex;
@@ -66,7 +72,7 @@ const FooterMiddle = styled.div`
         font-size: 1.5rem;
     }
     @media (max-width: 768px) {
-        margin-left: 8rem;
+        width: 50%;
     }
 `;
 const FooterNav = styled.div`
@@ -82,9 +88,7 @@ const FooterNav = styled.div`
 const FooterRight = styled.div`
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     width: 33%;
-    margin-right: 45rem;
 
     & span {
         margin: 2rem 0;
@@ -92,17 +96,19 @@ const FooterRight = styled.div`
         font-size: 1.5rem;
     }
     @media (max-width: 768px) {
-    margin-left: 8rem;
-    width: 45%;
+    width: 60%;
     margin-bottom: 5rem;
     }
 `;
 const Instagram = styled.div`
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 1rem;
 `;
-
+const IntaRow = styled.div`
+    display: flex;
+    gap: 1rem;
+`;
 export default function FooterSection() {
     return (
         <Page>
@@ -136,12 +142,16 @@ export default function FooterSection() {
                     <FooterRight>
                         <span>Instagram</span>
                         <Instagram>
+                            <IntaRow>
                             <img src={instagram1}/>
                             <img src={instagram2}/>
                             <img src={instagram3}/>
+                            </IntaRow>
+                            <IntaRow>
                             <img src={instagram4}/>
                             <img src={instagram5}/>
-                            <img src={instagram6}/> 
+                            <img src={instagram6}/>
+                            </IntaRow>
                         </Instagram>
                     </FooterRight>
                 </FooterUpper>

@@ -17,22 +17,17 @@ import Hackathlon from "./Hackathlon";
 
 const Page = styled.div`
     font-family: Roboto Condensed, sans-serif;
-    
-
-    @media (max-width: 768px) {
-        
-    }
 `;
 const MainUpper = styled.section`
     background-image: url("../../images/iteration-1-images/home-banner.png");
     background-size: cover;
     background-repeat: no-repeat;
-    height: 1100px;
     width: 100%;
     @media (max-width: 768px) {
         background-position: center;
         height: 700px;
         background-size: auto;
+        width: 110%;
     }
 `;
 const Header = styled.header`
@@ -99,6 +94,7 @@ const Banner = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 3rem;
     margin-bottom: 35rem;
     @media (max-width: 768px) {
         margin-bottom: 25rem;
@@ -126,14 +122,13 @@ const Components = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
     width: 100%;
+    gap: 1rem;
     background-color: #FAF7F2;
     padding-top: 3rem;
     @media (max-width: 768px) {
         width: 100%;
         flex-direction: column;
-        height: 100rem;;
     }
 `;
 const LeftContainer = styled.div`
@@ -147,7 +142,7 @@ const LeftContainer = styled.div`
 `;
 const RightContainer = styled.div`
     width: 23%;
-    margin-top: -1rem;
+    margin-top: -0.5rem;
     @media (max-width: 768px) {
         margin-bottom: 1rem;
         width: 100%;
@@ -189,6 +184,24 @@ const MenuTitle = styled.div`
         font-size: 2rem;
     }
 `;
+const MenuNav = styled.nav`
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 1rem 0;
+    align-items: center;
+
+    & a {
+        color: black;
+        text-decoration: none;
+        padding-left: 1rem;
+    }
+    @media (max-width: 768px) {
+        flex-wrap: wrap;
+        flex-direction: column;
+        height: 300px;
+    }
+`;
 const MenuNavItem = styled.div`
     border: 1px solid #FAF7F2;
     border-radius: 5rem;
@@ -201,7 +214,7 @@ const MenuNavItem = styled.div`
     &:hover {
         background-color: #292929;
         & a {
-            color: white;
+            color:white;
         }
     }
 `;
@@ -224,6 +237,7 @@ const Card = styled.div`
         width: 80%;
         margin: 0 auto;
         margin-bottom: 1rem;
+        cursor: pointer;
     }
     & span {
         font-weight: bold;
@@ -310,7 +324,7 @@ export default function HomePage() {
                         <span>en çok paketlenen menüler</span>
                         <h2>Acıktıran Kodlara Doyuran Lezzetler</h2>
                     </MenuTitle>
-                    <Nav>
+                    <MenuNav>
                         <MenuNavItem>
                             <img src={ramen}/>
                             <Link to="/order">Ramen</Link>
@@ -335,10 +349,10 @@ export default function HomePage() {
                             <img src={drink}/>
                             <Link to="/order">Soft drinks</Link>
                         </MenuNavItem>
-                    </Nav>
+                    </MenuNav>
                     <Cards>
                         <Card>
-                            <img src={termnalPizza} />
+                            <img src={termnalPizza} onClick={handleClick}/>
                             <span>Terminal Pizza</span>
                             <CardInfo>
                                 <span>4.9</span>
@@ -349,7 +363,7 @@ export default function HomePage() {
                             </CardInfo>
                         </Card>
                         <Card>
-                            <img src={positionAbsolutePizza} />
+                            <img src={positionAbsolutePizza} onClick={handleClick}/>
                             <span>Position Absolute Pizza</span>
                             <CardInfo>
                                 <span>4.9</span>
@@ -360,7 +374,7 @@ export default function HomePage() {
                             </CardInfo>
                         </Card>
                         <Card>
-                            <img src={useEffectTavukluPizza} />
+                            <img src={useEffectTavukluPizza} onClick={handleClick}/>
                             <span>useEffect Tavuklu Pizza</span>
                             <CardInfo>
                                 <span>4.9</span>

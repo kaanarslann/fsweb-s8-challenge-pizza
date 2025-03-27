@@ -6,17 +6,17 @@ const Page = styled.div`
     background-image: url(${image});
     background-size: auto;
     background-position: center;
-    width: 90%;
+    width: 100%;
     aspect-ratio: 2/1;
     padding: 2rem;
     border-radius: 5%;
+    font-family: Roboto, sans-serif;
 `;
 const Title = styled.h2`
-    font-family: "Quattrocento", serif;
+    font-weight: 500;
 `;
 
 const Button = styled.button`
-    font-family: Roboto, sans-serif;
     background-color: white;
     border: none;
     color: #CE2829;
@@ -24,6 +24,10 @@ const Button = styled.button`
     border-radius: 5rem;
     height: 2.5rem;
     padding: 0.5rem;
+    margin-top: 1rem;
+`;
+const Red = styled.span`
+    color: #CE2829;
 `;
 
 export default function Kurye() {
@@ -35,7 +39,7 @@ export default function Kurye() {
     
     return (
         <Page className="container">
-            <Title>Çoooook hızlı</Title>
+            <Title><Red>Çoooook</Red> hızlı</Title>
             <Title>npm gibi kurye</Title>
             <Button onClick={handleClick}>SİPARİŞ VER</Button>
         </Page>

@@ -5,9 +5,9 @@ import styled from "styled-components";
 const Page = styled.div`
     background: url(${image});
     background-size: cover;
-    width: 90%;
+    width: 100%;
     aspect-ratio: 1/1;
-    padding: 2rem;
+    padding: 3rem;
     border-radius: 5%;
     @media (max-width: 768px) {
         
@@ -22,6 +22,7 @@ const Title = styled.h2`
 const Detail = styled.p`
     font-family: Roboto, sans-serif;
     color: white;
+    margin-bottom: 2rem;
 `;
 const Button = styled.button`
     font-family: Roboto, sans-serif;
@@ -30,7 +31,8 @@ const Button = styled.button`
     color: #CE2829;
     cursor: pointer;
     border-radius: 5rem;
-    height: 2.5rem;
+    height: 3rem;
+    width: 10rem;
     padding: 0.5rem;
 `;
 

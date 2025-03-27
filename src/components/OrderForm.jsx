@@ -18,6 +18,7 @@ const Header = styled.header`
     flex-direction: column;
     align-items: center;
     padding: 1rem 0;
+    
 `;
 const Logo = styled.img`
     margin: 2rem 0;
@@ -26,7 +27,7 @@ const Nav = styled.nav`
     display: flex;
     gap: 0.5rem;
     margin-top: 5rem;
-    margin-right: 20%;
+    width: 28%;
     a {
         color: #292929;
         text-decoration: none;
@@ -37,6 +38,7 @@ const Nav = styled.nav`
     }
     @media (max-width: 768px) {
         margin-top:1rem;
+        width: 75%;
     }
 `;
 const Main = styled.main`
@@ -50,12 +52,10 @@ const Main = styled.main`
 const OrderUpper = styled.section`
     background-color: #FAF7F2;
     width: 99.2vw;
-    height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     @media (max-width: 768px) {
-        height: 110vh;
         & img {
             width: 80%;
         }
@@ -143,7 +143,7 @@ const SelectInput = styled(Input)`
     height: 60px;
 
     @media (max-width: 768px) {
-        width: 100%;
+        width: 112%;
         height: 40px;
     }
 `;
@@ -183,7 +183,7 @@ const TopInfo = styled.span`
 `;
 const Toppings = styled.div`
     margin-top: 2rem;
-    width: 110%;
+    width: 120%;
     @media (max-width: 768px) {
         margin-left: -5rem;
         margin-right: -13rem;

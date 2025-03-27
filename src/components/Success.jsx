@@ -32,7 +32,7 @@ const Main = styled.main`
     @media (max-width: 768px) {
         width: 50%;
         margin-top: -5rem;
-        margin-left: 13rem;
+        margin-left: 12rem;
     }
     
 `;
@@ -52,7 +52,7 @@ const SuccessTitle = styled.section`
     }
     & h1 {
         color: white;
-        font-size: 7rem;
+        font-size: 6rem;
         font-weight: 300;
         margin-bottom: 3rem;
 
@@ -104,7 +104,7 @@ const TotalSection = styled.section`
     flex-direction: column;
     padding: 4rem;
     gap: 1rem;
-    width: 20%;
+    width: 35rem;
     aspect-ratio: 2/1;
     margin-bottom: 10rem;
 
@@ -113,6 +113,7 @@ const TotalSection = styled.section`
     }
     @media (max-width: 768px) {
         width: 120%;
+        padding: 2rem;
     }
 `;
 const TotalLower = styled.section`
@@ -123,9 +124,9 @@ const TotalLower = styled.section`
 `;
 const LowerInfo = styled.div`
     display: flex;
-    gap: 12rem;
+    gap: 15rem;
     @media (max-width: 768px) {
-         gap: 9rem;
+         gap: 10rem;
         }
 `;
 
